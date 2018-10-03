@@ -1,0 +1,55 @@
+---
+name: historic_data
+pack: prtg
+description: "Queries PRTG for historic data from a Sensor."
+runner_type: "python-script"
+enabled: true
+entry_point: lib/historic_data.py
+parameters:
+  endpoint:
+    type: string
+    immutable: true
+    default: "/api/historicdata.json"
+  params:
+    type: object
+    immutable: true
+    default:
+      usecaption: 'true'
+      avg: "{{ average_interval_sec }}"
+      sdate: "{{ start_date }}"
+      edate: "{{ end_date }}"
+  id:
+    type: string
+    description: "ID of the object (ex: sensor) to query data for."
+    required: true
+  start_date:
+    type: string
+    description: "Date+time for the beginning of the query range. Required format: yyy-mm-dd-hh-mm-ss"
+    required: true
+  end_date:
+    type: string
+    description: "Date+time for the end of the query range. Required format: yyy-mm-dd-hh-mm-ss"
+    required: true
+  average_interval_sec:
+    type: integer
+    description: "The amount of time each value represents in the returned query, in seconds. Use 0 to return raw data. (default = 3,600  : 1 hour)"
+    default: 3600
+  server:
+    type: string
+    description: "Hostname/IP of the PRTG server"
+  transport:
+    type: string
+    description: "HTTP or HTTPS transport to use when communicating with the API"
+    default: https
+  verify_ssl:
+    type: boolean
+    description: "Should the server SSL certificates be verified?"
+    default: true
+  username:
+    type: string
+    description: "User to authenticate as,"
+  password:
+    type: string
+    description: "Password to authenticate with."
+    secret: true
+

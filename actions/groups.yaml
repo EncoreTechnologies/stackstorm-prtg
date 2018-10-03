@@ -1,0 +1,60 @@
+---
+name: groups
+pack: prtg
+description: "Retrieves a list of groups, or a single group if 'id' is specified."
+runner_type: "python-script"
+enabled: true
+entry_point: lib/base.py
+parameters:
+  endpoint:
+    type: string
+    immutable: true
+    default: "/api/table.json"
+  params:
+    type: object
+    immutable: true
+    default:
+      content: "groups"
+      output: "json"
+  id:
+    type: string
+    description: "Optional ID of the group to retrieve. If specified only the individual group will be returned and not a list of all groups."
+    required: false
+  columns:
+    type: array
+    items:
+      type: string
+    description: "List of columns to retrieve"
+    default:
+      - "objid"
+      - "name"
+      - "parent"
+      - "probe"
+      - "group"
+      - "downsens"
+      - "partialdownsens"
+      - "downacksens"
+      - "upsens"
+      - "warnsens"
+      - "pausedsens"
+      - "unusualsens"
+      - "undefinedsens"
+  server:
+    type: string
+    description: "Hostname/IP of the PRTG server"
+  transport:
+    type: string
+    description: "HTTP or HTTPS transport to use when communicating with the API"
+    default: https
+  verify_ssl:
+    type: boolean
+    description: "Should the server SSL certificates be verified?"
+    default: true
+  username:
+    type: string
+    description: "User to authenticate as,"
+  password:
+    type: string
+    description: "Password to authenticate with."
+    secret: true
+

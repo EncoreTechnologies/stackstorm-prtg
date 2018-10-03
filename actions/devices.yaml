@@ -1,0 +1,61 @@
+---
+name: devices
+pack: prtg
+description: "Retrieves a list of devices, or a single device if 'id' is specified."
+runner_type: "python-script"
+enabled: true
+entry_point: lib/base.py
+parameters:
+  endpoint:
+    type: string
+    immutable: true
+    default: "/api/table.json"
+  params:
+    type: object
+    immutable: true
+    default:
+      content: "devices"
+      output: "json"
+  id:
+    type: string
+    description: "Optional ID of the device to retrieve. If specified only the individual device will be returned and not a list of all devices."
+    required: false
+  columns:
+    type: array
+    items:
+      type: string
+    description: "List of columns to retrieve"
+    default:
+      - "objid"
+      - "parent"
+      - "probe"
+      - "group"
+      - "device"
+      - "host"
+      - "downsens"
+      - "partialdownsens"
+      - "downacksens"
+      - "upsens"
+      - "warnsens"
+      - "pausedsens"
+      - "unusualsens"
+      - "undefinedsens"
+  server:
+    type: string
+    description: "Hostname/IP of the PRTG server"
+  transport:
+    type: string
+    description: "HTTP or HTTPS transport to use when communicating with the API"
+    default: https
+  verify_ssl:
+    type: boolean
+    description: "Should the server SSL certificates be verified?"
+    default: true
+  username:
+    type: string
+    description: "User to authenticate as,"
+  password:
+    type: string
+    description: "Password to authenticate with."
+    secret: true
+

@@ -1,0 +1,12 @@
+---
+ref: prtg
+name: prtg
+description: StackStorm integration pack for PRTG Networking Monitoring
+keywords: 
+    - prtg
+    - paessler
+    - network
+    - monitoring
+version: 0.1.0
+author: Encore Technologies
+email: code@encore.tech

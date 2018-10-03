@@ -1,0 +1,47 @@
+---
+name: sensor_tree
+pack: prtg
+description: "Retrieves a tree structure of all probenodes, sensors, groups and devices"
+runner_type: "python-script"
+enabled: true
+entry_point: lib/base.py
+parameters:
+  endpoint:
+    type: string
+    immutable: true
+    default: "/api/table.xml"
+  params:
+    type: object
+    immutable: true
+    default:
+      content: "sensortree"
+      output: "xml"
+  id:
+    type: string
+    description: "Optional ID of an object to retrieve (probe, sensor, device, etc). Each object has a system-wide unique ID so any ID can be passed in."
+    required: false
+  columns:
+    type: array
+    items:
+      type: string
+    description: "List of columns to retrieve"
+    default: []  
+  server:
+    type: string
+    description: "Hostname/IP of the PRTG server"
+  transport:
+    type: string
+    description: "HTTP or HTTPS transport to use when communicating with the API"
+    default: https
+  verify_ssl:
+    type: boolean
+    description: "Should the server SSL certificates be verified?"
+    default: true
+  username:
+    type: string
+    description: "User to authenticate as,"
+  password:
+    type: string
+    description: "Password to authenticate with."
+    secret: true
+

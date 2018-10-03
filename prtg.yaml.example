@@ -1,0 +1,14 @@
+---
+credentials:
+  dev:
+    server: "prtg01.dev.domain.tld"
+    username: "user"
+    password: "my cool password"
+    transport: "http"
+    verify_ssl: false
+  prod:
+    server: "prtg01.prod.domain.tld"
+    username: "user2"
+    password: "my cool password2"
+    transport: "https"
+    verify_ssl: true

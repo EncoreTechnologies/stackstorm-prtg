@@ -1,0 +1,52 @@
+---
+name: sensor_values
+pack: prtg
+description: "Retrieves values for a given sensor."
+runner_type: "python-script"
+enabled: true
+entry_point: lib/base.py
+parameters:
+  endpoint:
+    type: string
+    immutable: true
+    default: "/api/table.json"
+  params:
+    type: object
+    immutable: true
+    default:
+      content: "values"
+      output: "json"
+      noraw: 1
+      usecaption: 'true'
+  id:
+    type: string
+    description: "ID of the sensor"
+    required: true
+  columns:
+    type: array
+    items:
+      type: string
+    description: "List of columns to retrieve"
+    default:
+      - "datetime"
+      - "value_"
+      - "coverage"
+  server:
+    type: string
+    description: "Hostname/IP of the PRTG server"
+  transport:
+    type: string
+    description: "HTTP or HTTPS transport to use when communicating with the API"
+    default: https
+  verify_ssl:
+    type: boolean
+    description: "Should the server SSL certificates be verified?"
+    default: true
+  username:
+    type: string
+    description: "User to authenticate as,"
+  password:
+    type: string
+    description: "Password to authenticate with."
+    secret: true
+
