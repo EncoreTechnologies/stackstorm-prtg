@@ -81,7 +81,7 @@ class TestHistoricDataAction(PrtgBaseTestCase):
         with self.assertRaises(ValueError):
             action.run(**kwargs)
 
-    def test_run_invalid_start_raises(self):
+    def test_run_invalid_end_raises(self):
         action = self.get_action_instance({})
         kwargs = {
             'start_date': '2018-10-10-00-00-00',
